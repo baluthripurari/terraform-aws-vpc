@@ -16,8 +16,6 @@ resource "aws_vpc" "main" { # creating a vpc
 
 #attaching internet gateway to vpc [0.0.0.0.0]
 
-
-
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
@@ -34,15 +32,17 @@ resource "aws_internet_gateway" "igw" {
 ## public Subnet ###
 resource "aws_subnet" "public" {
     count = length(var.public_subnet_cidrs)
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_subnet_cidrs[count.index]
+    availability_zone = local.az_names[count.index]
+    map_public_ip_on_launch = true
+    vpc_id     = aws_vpc.main.id
+    cidr_block = var.public_subnet_cidrs[count.index]
 
  tags = merge(
         var.common_tags,
-        var.public_subnet_cidrs,
+        var.public_subnet_cidrs_tags,
 
         {
-            Name = local.resource_name
+            Name = "${local.resource_name}-${local.az_names[count.index]}"
         }
     )
 }
