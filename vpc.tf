@@ -84,7 +84,19 @@ resource "aws_subnet" "Database" {       # first name is database[0], second nam
     )
 }
 
+resource "aws_db_subnet_group" "default" {
+  name       = "${local.resource_name}"
+  subnet_ids = aws_subnet.Database[*].id
 
+  tags = merge(
+        var.common_tags,
+        var.Databse_subnet_group_tags,
+
+        {
+            Name = "${local.resource_name}"
+        }
+    )
+}
 resource "aws_eip" "NAT" {
   domain   = "vpc"
 }

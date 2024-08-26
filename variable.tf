@@ -77,6 +77,11 @@ variable "Database_subnet_cidrs_tags" {
 
 }
 
+variable "Databse_subnet_group_tags" {
+  type = map
+  default = {}
+}
+
 
   # NAT_GATEWAY_TAGS
 variable "aws_nat_gateway_tags" {
@@ -105,3 +110,23 @@ variable "Database_route_table_tags" {
   default = {}
 }
 
+#vpc peering
+
+variable "is_peering_required" {
+  type = bool
+  default = false
+}
+
+
+
+variable "acceptor_vpc_id" {
+  type = string
+  default = ""
+  
+}
+
+variable "vpc_peering_tags" {
+  type = map
+  default = {}
+  
+}
