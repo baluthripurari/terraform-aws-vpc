@@ -1,3 +1,3 @@
-# VPC Arcitecture
+# VPC
 
-![Alt text](C:\Users\balum\OneDrive\Pictures-vpc.drawio.svg)
+![Alt text](Downloads/vpc.drawio.png)
