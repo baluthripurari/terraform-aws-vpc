@@ -47,3 +47,10 @@ This module creates resources in First 2 Availability Zones for High Availabilit
 * vpc_peering_tags (optional) : Default is empty . type is map.
 
 
+# Outputs
+
+* vpc_id: VPC ID
+* public_subnet_ids: A list of 2 public subnet IDS created
+* private_subnet_ids: A list of 2 private subnet IDS created
+* Database_subnet_ids: A list of 2 Database subnet IDS created
+* Database_subnet_group_id: A databse subnet group ID created
